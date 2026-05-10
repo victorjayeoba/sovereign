@@ -1,0 +1,6 @@
+# Local-dev secrets for `wrangler dev` — copy to .dev.vars (gitignored).
+# Production secrets must be set via:
+#   pnpm --filter sentinel dlx wrangler secret put <KEY>
+
+# Admin bearer for /v1/sdn/refresh
+ADMIN_BEARER=changeme-local-dev-only

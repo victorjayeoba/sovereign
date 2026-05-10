@@ -1,0 +1,37 @@
+{
+  "name": "sovereign",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Forensic AI that pays its own way. Local QVAC inference + autonomous USDT-SPL payments via WDK.",
+  "license": "MIT",
+  "packageManager": "pnpm@10.15.1",
+  "engines": {
+    "node": ">=22.17.0"
+  },
+  "scripts": {
+    "dev": "pnpm --filter desktop dev",
+    "dev:desktop": "pnpm --filter desktop dev",
+    "dev:sentinel": "pnpm --filter sentinel dev",
+    "build": "pnpm -r build",
+    "build:desktop": "pnpm --filter desktop build",
+    "build:sentinel": "pnpm --filter sentinel build",
+    "typecheck": "pnpm -r typecheck",
+    "lint": "pnpm -r lint",
+    "clean": "pnpm -r clean && rm -rf node_modules"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "electron",
+      "esbuild",
+      "@parcel/watcher",
+      "better-sqlite3",
+      "keytar"
+    ],
+    "overrides": {
+      "uuid": "^9.0.1"
+    }
+  }
+}

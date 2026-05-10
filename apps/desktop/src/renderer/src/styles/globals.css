@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Design tokens (CSS variables) ────────────────────────────────────── */
+@layer base {
+  :root {
+    --font-bricolage: 'Bricolage Grotesque', system-ui, sans-serif;
+    --font-inter: 'Inter', system-ui, sans-serif;
+    --font-instrument: 'Instrument Sans', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Instrument Sans', ui-monospace, monospace;
+
+    --color-base: #000000;
+    --color-glass-tint: rgba(173, 230, 255, 0.05);
+    --color-glass-tint-hover: rgba(173, 230, 255, 0.07);
+    --color-glass-border: rgba(255, 255, 255, 0.1);
+    --color-glass-border-strong: rgba(255, 255, 255, 0.18);
+
+    --color-cyan: #00d1ff;
+    --color-cyan-dim: rgba(0, 209, 255, 0.4);
+    --color-cyan-glow: rgba(0, 209, 255, 0.5);
+
+    --color-text-primary: rgba(255, 255, 255, 0.95);
+    --color-text-secondary: rgba(255, 255, 255, 0.65);
+    --color-text-tertiary: rgba(255, 255, 255, 0.4);
+
+    --color-flag-red: #ff3b5c;
+    --color-flag-amber: #ffb547;
+    --color-flag-green: #00e5a0;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    background: #000000;
+    color: var(--color-text-primary);
+    font-family: var(--font-inter);
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow: hidden;
+  }
+
+  /* Subtle radial glow that gives the black canvas depth — Raycast-style */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(0, 209, 255, 0.06), transparent 60%),
+      radial-gradient(ellipse 60% 50% at 100% 100%, rgba(173, 230, 255, 0.03), transparent 60%);
+    z-index: 0;
+  }
+
+  /* Scrollbar styling — barely visible, glass on hover */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 4px;
+    transition: background 200ms ease;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.16);
+  }
+
+  /* Selection — cyan tint, not blue */
+  ::selection {
+    background: rgba(0, 209, 255, 0.25);
+    color: var(--color-text-primary);
+  }
+}
+
+/* ── The signature glass material ─────────────────────────────────────── */
+@layer components {
+  .glass {
+    background: var(--color-glass-tint);
+    backdrop-filter: blur(25px) saturate(160%);
+    -webkit-backdrop-filter: blur(25px) saturate(160%);
+    border: 1px solid var(--color-glass-border);
+    border-radius: 16px;
+    transition:
+      border-color 200ms ease,
+      background 200ms ease,
+      box-shadow 200ms ease;
+  }
+
+  .glass-hover:hover {
+    border-color: var(--color-glass-border-strong);
+    background: var(--color-glass-tint-hover);
+  }
+
+  .glass-active {
+    border-color: rgba(0, 209, 255, 0.6);
+    box-shadow:
+      0 0 0 1px rgba(0, 209, 255, 0.4),
+      0 0 32px -8px var(--color-cyan-glow);
+  }
+
+  /* Cyan dot used by the Privacy Badge */
+  .cyan-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 9999px;
+    background: var(--color-cyan);
+    box-shadow: 0 0 8px var(--color-cyan-glow);
+  }
+
+  /* Hairline divider that catches a hint of light */
+  .hairline {
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      var(--color-glass-border),
+      transparent
+    );
+  }
+}

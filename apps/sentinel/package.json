@@ -1,0 +1,24 @@
+{
+  "name": "sentinel",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Sovereign Sentinel API — paywalled OFAC sanctions lookup with x402 USDT-SPL settlement",
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "wrangler dev",
+    "build": "wrangler deploy --dry-run --outdir=dist",
+    "deploy": "wrangler deploy",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@sovereign/shared": "workspace:*",
+    "hono": "^4.6.13",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241218.0",
+    "typescript": "^5.6.3",
+    "wrangler": "^3.95.0"
+  }
+}

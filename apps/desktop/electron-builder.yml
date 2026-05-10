@@ -1,0 +1,51 @@
+appId: ai.sovereign.desktop
+productName: Sovereign
+copyright: Copyright © 2026 Sovereign
+
+directories:
+  buildResources: resources
+  output: release
+
+files:
+  - "out/**/*"
+  - "package.json"
+  - "!**/*.map"
+
+asar: true
+asarUnpack:
+  - "**/node_modules/keytar/**"
+  - "**/node_modules/better-sqlite3/**"
+  - "**/node_modules/@tetherto/**"
+  - "**/node_modules/@qvac/**"
+
+extraResources:
+  - from: resources/models
+    to: models
+    filter: ["**/*"]
+
+mac:
+  target:
+    - target: dmg
+      arch: [arm64]
+  category: public.app-category.developer-tools
+  hardenedRuntime: false
+  identity: null
+  gatekeeperAssess: false
+  darkModeSupport: true
+
+dmg:
+  contents:
+    - x: 130
+      y: 220
+    - x: 410
+      y: 220
+      type: link
+      path: /Applications
+
+linux:
+  target:
+    - AppImage
+
+win:
+  target:
+    - nsis

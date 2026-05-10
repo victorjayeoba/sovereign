@@ -1,0 +1,39 @@
+name = "sovereign-sentinel"
+main = "src/index.ts"
+compatibility_date = "2026-05-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Sentinel runs locally via `wrangler dev` (port 8787 by default).
+# Public deployment is optional — the desktop app talks to localhost.
+# To deploy publicly anyway:
+#   pnpm dlx wrangler deploy
+# Then update .env's SENTINEL_URL to the workers.dev URL.
+
+# KV namespaces — create with: wrangler kv:namespace create <name>
+# [[kv_namespaces]]
+# binding = "SDN_KV"
+# id = "<paste-after-creation>"
+#
+# [[kv_namespaces]]
+# binding = "NONCE_KV"
+# id = "<paste-after-creation>"
+
+# R2 bucket — create with: wrangler r2 bucket create sovereign-sdn
+# [[r2_buckets]]
+# binding = "SDN_R2"
+# bucket_name = "sovereign-sdn"
+
+# Daily refresh of the OFAC SDN list
+# [triggers]
+# crons = ["0 6 * * *"]
+
+[vars]
+LOOKUP_PRICE = "10000"
+NONCE_TTL_SEC = "60"
+SOLANA_RPC_URL = "https://api.devnet.solana.com"
+# Set after running scripts/deploy-mock-usdt.ts
+USDT_MINT_DEVNET = "PLACEHOLDER_REPLACE_AFTER_MINT_DEPLOY"
+TREASURY_ATA = "PLACEHOLDER_REPLACE_AFTER_MINT_DEPLOY"
+
+# Local-dev secrets live in apps/sentinel/.dev.vars (see .dev.vars.example).
+# Production: `pnpm --filter sentinel dlx wrangler secret put ADMIN_BEARER`
