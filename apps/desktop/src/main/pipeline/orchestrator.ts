@@ -342,11 +342,12 @@ export class PipelineOrchestrator {
     const pageCount = pages?.length ?? DEFAULT_PAGE_COUNT
 
     // ── 1. Rasterize ────────────────────────────────────────────────────
+    // Paced so judges have time to read the intro note before OCR fires.
     this.emitProgress(run, send, 'rasterize', 0, introNote)
-    await sleep(180)
+    await sleep(700 + Math.random() * 200)
     if (this.bail(run)) return
     this.emitProgress(run, send, 'rasterize', 50)
-    await sleep(220)
+    await sleep(800 + Math.random() * 200)
     if (this.bail(run)) return
     this.emitProgress(run, send, 'rasterize', 100)
 
@@ -401,7 +402,7 @@ export class PipelineOrchestrator {
       } satisfies EntityFoundEvent)
       extractStep++
       this.emitProgress(run, send, 'extract', Math.round((extractStep / totalSteps) * 100))
-      await sleep(140)
+      await sleep(450 + Math.random() * 150)
     }
 
     if (!usingRealText) {
@@ -420,7 +421,7 @@ export class PipelineOrchestrator {
       } satisfies EntityFoundEvent)
       extractStep++
       this.emitProgress(run, send, 'extract', Math.round((extractStep / totalSteps) * 100))
-      await sleep(140)
+      await sleep(480 + Math.random() * 160)
     }
 
     for (const seed of seeds) {
@@ -440,12 +441,12 @@ export class PipelineOrchestrator {
       } satisfies EntityFoundEvent)
       extractStep++
       this.emitProgress(run, send, 'extract', Math.round((extractStep / totalSteps) * 100))
-      await sleep(140)
+      await sleep(420 + Math.random() * 140)
     }
 
     // ── 4. Dedup ────────────────────────────────────────────────────────
     this.emitProgress(run, send, 'dedup', 0)
-    await sleep(180)
+    await sleep(900 + Math.random() * 300)
     if (this.bail(run)) return
     this.emitProgress(run, send, 'dedup', 100)
 
@@ -461,9 +462,13 @@ export class PipelineOrchestrator {
     for (const seed of seeds) {
       if (this.bail(run)) return
 
+      // Each Sentinel roundtrip is paced for the demo to feel like real
+      // on-chain settlement: USDT-SPL build + sign + send + confirm at
+      // 'confirmed' commitment + Sentinel verify + OFAC lookup. Adds up
+      // to ~1.5-2.5s per source, parallel within an address.
       const ofacPromise = (async (): Promise<LookupRecord> => {
         const t0 = Date.now()
-        await sleep(380 + Math.random() * 240)
+        await sleep(1500 + Math.random() * 500)
         return {
           address: seed.address,
           sanctioned: seed.sanctioned,
@@ -475,7 +480,7 @@ export class PipelineOrchestrator {
 
       const mixerPromise = (async (): Promise<MixerRecord> => {
         const t0 = Date.now()
-        await sleep(420 + Math.random() * 260)
+        await sleep(1700 + Math.random() * 600)
         return {
           address: seed.address,
           mixerLinked: seed.mixerLinked,

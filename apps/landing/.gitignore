@@ -1,0 +1,19 @@
+# Next.js
+.next/
+.next-types/
+next-env.d.ts.timestamp-*
+
+# Deployment
+.vercel/
+.netlify/
+
+# Caches
+.turbo/
+.swc/
+
+# Local env overrides (root .gitignore also covers these — defense in depth)
+.env*.local
+
+# IDE — landing-specific scratch files
+.idea/
+*.iml

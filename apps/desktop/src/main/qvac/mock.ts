@@ -86,8 +86,11 @@ export class MockQvacEngine implements QvacEngine {
         confidence: 0.92,
       },
     ]
+    // Per-block latency tuned for visible streaming pacing — judges should
+    // see each block resolve as a discrete moment rather than a flicker.
+    // Randomness avoids a metronome feel when pages flow in.
     for (const b of fakeBlocks) {
-      await sleep(60)
+      await sleep(280 + Math.random() * 120)
       yield { ...b, pageNum: args.pageNum, pageDims: args.pageDims }
     }
   }
@@ -97,7 +100,9 @@ export class MockQvacEngine implements QvacEngine {
     pageNum: number
     regexCandidateAddresses: string[]
   }): Promise<ExtractedEntity[]> {
-    await sleep(450)
+    // Per-page LLM tool call paced to look like real inference — there's a
+    // visible "thinking" beat before entities arrive.
+    await sleep(1100 + Math.random() * 350)
     const out: ExtractedEntity[] = []
 
     // Echo any regex-detected addresses as wallet entities
@@ -135,12 +140,12 @@ export class MockQvacEngine implements QvacEngine {
   }
 
   async embed(text: string): Promise<Float32Array> {
-    await sleep(8)
+    await sleep(60 + Math.random() * 25)
     return this.fakeEmbedding(text)
   }
 
   async embedBatch(texts: string[]): Promise<Float32Array[]> {
-    await sleep(8 + texts.length * 4)
+    await sleep(120 + texts.length * 18 + Math.random() * 50)
     return texts.map((t) => this.fakeEmbedding(t))
   }
 
