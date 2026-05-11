@@ -134,13 +134,17 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 12px 20px;
+    height: 44px;
+    padding: 0 20px;
     background: var(--color-cyan);
     color: #001019;
     font-family: var(--font-inter), system-ui, sans-serif;
     font-size: 14px;
     font-weight: 600;
+    line-height: 1;
+    border: 1px solid transparent;
     border-radius: 12px;
+    box-sizing: border-box;
     transition: transform 200ms ease, box-shadow 200ms ease, background 200ms ease;
     box-shadow:
       0 0 0 1px rgba(0, 209, 255, 0.5),
@@ -158,14 +162,17 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 11px 19px;
+    height: 44px;
+    padding: 0 20px;
     background: rgba(255, 255, 255, 0.02);
     color: var(--color-text-primary);
     font-family: var(--font-inter), system-ui, sans-serif;
     font-size: 14px;
     font-weight: 500;
+    line-height: 1;
     border: 1px solid var(--color-glass-border);
     border-radius: 12px;
+    box-sizing: border-box;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     transition: border-color 200ms ease, background 200ms ease;
