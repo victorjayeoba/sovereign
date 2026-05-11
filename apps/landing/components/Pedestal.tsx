@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import type * as React from 'react'
 
 /**
  * Wood-pedestal + tablet asset. The asset's tablet has an empty black screen —
@@ -7,7 +7,7 @@ import type { ReactNode } from 'react'
  * The percentages below are tuned to /pedestal.png. If the asset is swapped,
  * adjust the screen rect numbers to match the new bezel.
  */
-export default function Pedestal({ children }: { children: ReactNode }) {
+export default function Pedestal({ children }: React.PropsWithChildren) {
   return (
     <div className="relative mx-auto w-full aspect-[1020/730]">
       <img

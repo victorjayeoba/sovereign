@@ -1,3 +1,4 @@
+import type * as React from 'react'
 import { HugeiconsIcon } from '@hugeicons/react'
 import {
   SquareLock01Icon,
