@@ -46,7 +46,7 @@ function PreviewWithPlay() {
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative">
       {/* GradientField backdrop — confined to the hero section only */}
       <div className="absolute inset-0 z-0">
         <GradientField />
@@ -65,7 +65,7 @@ export default function Hero() {
           of THIS container so it stays anchored to the content edge instead
           of drifting to the viewport edge on huge screens. */}
       <div
-        className="relative z-10 mx-auto max-w-[1440px] px-6 lg:px-12 pt-24 lg:pt-32 overflow-hidden"
+        className="relative z-10 mx-auto max-w-[1440px] px-6 lg:px-12 pt-24 lg:pt-32"
         style={{ minHeight: 'clamp(640px, 92vh, 900px)' }}
       >
         {/* Text block — left-aligned, capped width */}
@@ -128,7 +128,7 @@ export default function Hero() {
             right: 0,
             bottom: '-5rem',
             top: '12rem',
-            width: 'clamp(560px, 52vw, 980px)',
+            width: 'clamp(500px, 46vw, 860px)',
             animationDelay: '420ms',
             animationFillMode: 'backwards',
           }}
