@@ -65,7 +65,7 @@ export default function Hero() {
           of THIS container so it stays anchored to the content edge instead
           of drifting to the viewport edge on huge screens. */}
       <div
-        className="relative z-10 mx-auto max-w-[1440px] px-6 lg:px-12 pt-10 lg:pt-16 overflow-hidden"
+        className="relative z-10 mx-auto max-w-[1440px] px-6 lg:px-12 pt-24 lg:pt-32 overflow-hidden"
         style={{ minHeight: 'clamp(640px, 92vh, 900px)' }}
       >
         {/* Text block — left-aligned, capped width */}
@@ -123,11 +123,12 @@ export default function Hero() {
 
         {/* Pedestal — absolute bottom-right of THIS container (not viewport) */}
         <div
-          className="absolute hidden lg:block animate-fade-in-up"
+          className="absolute hidden lg:flex items-end justify-end animate-fade-in-up"
           style={{
-            right: '-1rem',
-            bottom: 0,
-            width: 'clamp(480px, 44vw, 820px)',
+            right: 0,
+            bottom: '-5rem',
+            top: '12rem',
+            width: 'clamp(560px, 52vw, 980px)',
             animationDelay: '420ms',
             animationFillMode: 'backwards',
           }}
