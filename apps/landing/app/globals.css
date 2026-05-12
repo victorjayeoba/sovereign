@@ -28,6 +28,10 @@
     font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+  body {
+    overflow-x: clip;
   }
 
   /* Subtle radial cyan glow behind everything */
