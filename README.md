@@ -20,32 +20,11 @@ Built for **Colosseum Frontier** + the **Tether QVAC side track**, May 2026.
 
 ## Demo
 
-<!--
-═══════════════════════════════════════════════════════════════════════════
-  HOW TO EMBED THE DEMO VIDEO
-
-  Option 1 — Native GitHub video player (recommended)
-    1. Open a draft issue or PR on this repo.
-    2. Drag-and-drop the .mp4 into the comment box.
-    3. GitHub will replace your drop with a URL of the form:
-         https://github.com/user-attachments/assets/<uuid>
-    4. Paste that URL on its own line below, replacing the placeholder.
-       GitHub will render it as an inline playable video.
-
-  Option 2 — YouTube / Loom thumbnail link (fallback)
-    Delete the URL line below and uncomment the <a><img> block beneath.
-═══════════════════════════════════════════════════════════════════════════
--->
-
 <div align="center">
 
-https://github.com/user-attachments/assets/REPLACE_WITH_DEMO_VIDEO_URL
+[![Watch the Sovereign demo](https://img.youtube.com/vi/D1ibS8zL-Xw/maxresdefault.jpg)](https://youtu.be/D1ibS8zL-Xw)
 
-<!--
-<a href="REPLACE_WITH_YOUTUBE_OR_LOOM_URL">
-  <img src="./demo-assets/video-thumbnail.png" alt="Watch the Sovereign demo" width="720" />
-</a>
--->
+**[▶ Watch the demo on YouTube](https://youtu.be/D1ibS8zL-Xw)**
 
 <sub>3-minute walkthrough · Mac M-series · Solana devnet</sub>
 
@@ -129,9 +108,9 @@ flowchart TB
     Solana -->|"tx proof"| Pay
     Lookup --> OFACdata
 
-    classDef local fill:#F9F9F6,stroke:#1A2F24,stroke-width:2px,color:#1A2F24;
-    classDef cloud fill:#FFFFFF,stroke:#6B7280,stroke-width:1px,color:#2D2D2D;
-    classDef chain fill:#1A2F24,stroke:#1A2F24,stroke-width:2px,color:#F9F9F6;
+    classDef local fill:#0B1216,stroke:#1FD3FF,stroke-width:2px,color:#F4F6F8;
+    classDef cloud fill:#0F1418,stroke:#8B95A0,stroke-width:1px,color:#F4F6F8;
+    classDef chain fill:#1FD3FF,stroke:#1FD3FF,stroke-width:2px,color:#07090B;
     class Desktop,QVACBox,WDKBox local
     class Sentinel,Net cloud
     class Solana,OFACdata chain
@@ -211,9 +190,9 @@ flowchart LR
     EMB --> Dedup["Cosine cluster<br/><sub>cross-page dedup</sub>"]
     Dedup --> Findings[("Unique findings<br/>ready for x402 lookup")]
 
-    classDef qvac fill:#1A2F24,stroke:#1A2F24,color:#F9F9F6,stroke-width:2px;
-    classDef step fill:#FFFFFF,stroke:#6B7280,color:#2D2D2D;
-    classDef io fill:#F9F9F6,stroke:#1A2F24,color:#1A2F24,stroke-width:2px;
+    classDef qvac fill:#1FD3FF,stroke:#1FD3FF,color:#07090B,stroke-width:2px;
+    classDef step fill:#0F1418,stroke:#8B95A0,color:#F4F6F8;
+    classDef io fill:#0B1216,stroke:#1FD3FF,color:#F4F6F8,stroke-width:2px;
     class OCR,LLM,EMB qvac
     class Raster,Blocks,Regex,Entities,Filter,Dedup step
     class PDF,Findings io
