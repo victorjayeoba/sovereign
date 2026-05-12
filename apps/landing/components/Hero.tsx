@@ -19,10 +19,18 @@ function PreviewWithPlay({ onPlay }: { onPlay: () => void }) {
       className="relative block w-full h-full group cursor-pointer"
     >
       <img
-        src="/mock-preview.jpg"
-        alt="Sovereign app preview"
+        src={`https://img.youtube.com/vi/${DEMO_VIDEO_ID}/maxresdefault.jpg`}
+        alt="Sovereign demo video"
         className="w-full h-full object-cover transition-opacity duration-200 group-hover:opacity-80"
         draggable={false}
+        onError={(e) => {
+          // maxresdefault only exists for videos uploaded at 720p+.
+          // Fall back to hqdefault which is always present.
+          const img = e.currentTarget
+          if (!img.src.includes('hqdefault')) {
+            img.src = `https://img.youtube.com/vi/${DEMO_VIDEO_ID}/hqdefault.jpg`
+          }
+        }}
       />
       {/* Subtle dark veil so the play button reads cleanly */}
       <div className="absolute inset-0 bg-black/15 group-hover:bg-black/25 transition-colors duration-200" />
