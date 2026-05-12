@@ -1,15 +1,22 @@
+'use client'
+
+import { useState } from 'react'
 import { HugeiconsIcon } from '@hugeicons/react'
 import { PlayIcon, ArrowRight01Icon } from '@hugeicons/core-free-icons'
 import GradientField from './GradientField'
 import Nav from './Nav'
 import Pedestal from './Pedestal'
+import VideoModal from './VideoModal'
 
-function PreviewWithPlay() {
+const DEMO_VIDEO_ID = 'D1ibS8zL-Xw'
+
+function PreviewWithPlay({ onPlay }: { onPlay: () => void }) {
   return (
-    <a
-      href="#demo"
-      aria-label="Watch the 90s demo"
-      className="relative block w-full h-full group"
+    <button
+      type="button"
+      onClick={onPlay}
+      aria-label="Watch the Sovereign demo"
+      className="relative block w-full h-full group cursor-pointer"
     >
       <img
         src="/mock-preview.jpg"
@@ -40,13 +47,19 @@ function PreviewWithPlay() {
           />
         </span>
       </div>
-    </a>
+    </button>
   )
 }
 
 export default function Hero() {
+  const [videoOpen, setVideoOpen] = useState(false)
+  const openVideo = () => setVideoOpen(true)
+  const closeVideo = () => setVideoOpen(false)
+
   return (
     <section className="relative">
+      <VideoModal videoId={DEMO_VIDEO_ID} isOpen={videoOpen} onClose={closeVideo} />
+
       {/* GradientField backdrop — confined to the hero section only */}
       <div className="absolute inset-0 z-0">
         <GradientField />
@@ -99,10 +112,10 @@ export default function Hero() {
             className="mt-9 flex flex-wrap items-center gap-3 animate-fade-in-up"
             style={{ animationDelay: '220ms', animationFillMode: 'backwards' }}
           >
-            <a href="#demo" className="btn-primary">
+            <button type="button" onClick={openVideo} className="btn-primary">
               <HugeiconsIcon icon={PlayIcon} size={16} strokeWidth={2.2} />
               Watch the 90s Demo
-            </a>
+            </button>
             <a href="#how" className="btn-ghost">
               See how it works
               <HugeiconsIcon icon={ArrowRight01Icon} size={14} strokeWidth={2} />
@@ -134,14 +147,14 @@ export default function Hero() {
           }}
         >
           <Pedestal>
-            <PreviewWithPlay />
+            <PreviewWithPlay onPlay={openVideo} />
           </Pedestal>
         </div>
 
         {/* Mobile fallback — stacked below text */}
         <div className="relative lg:hidden mt-10 pb-12">
           <Pedestal>
-            <PreviewWithPlay />
+            <PreviewWithPlay onPlay={openVideo} />
           </Pedestal>
         </div>
       </div>
