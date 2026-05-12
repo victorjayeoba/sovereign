@@ -1,6 +1,8 @@
 import { HugeiconsIcon } from '@hugeicons/react'
 import { Download04Icon, ArrowRight01Icon } from '@hugeicons/core-free-icons'
 
+const REPO_URL = 'https://github.com/victorjayeoba/sovereign'
+
 /**
  * Closing CTA — large statement + download button. Last thing the user reads
  * before the footer.
@@ -27,11 +29,21 @@ export default function FinalCTA() {
         </p>
 
         <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
-          <a href="#" className="btn-primary">
+          <a
+            href={REPO_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary"
+          >
             <HugeiconsIcon icon={Download04Icon} size={15} strokeWidth={2.2} />
             Download for macOS
           </a>
-          <a href="#docs" className="btn-ghost">
+          <a
+            href={`${REPO_URL}#readme`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-ghost"
+          >
             Read the whitepaper
             <HugeiconsIcon icon={ArrowRight01Icon} size={14} strokeWidth={2} />
           </a>

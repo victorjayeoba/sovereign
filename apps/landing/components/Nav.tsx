@@ -2,6 +2,8 @@ import type * as React from 'react'
 import { HugeiconsIcon } from '@hugeicons/react'
 import { Download04Icon } from '@hugeicons/core-free-icons'
 
+const REPO_URL = 'https://github.com/victorjayeoba/sovereign'
+
 /**
  * Floating glass-pill nav — logo, links, and a download CTA all live inside
  * one rounded-full container with backdrop blur. Centered at the top of the
@@ -45,7 +47,9 @@ export default function Nav() {
 
         {/* CTA — solid cyan pill */}
         <a
-          href="#download"
+          href={REPO_URL}
+          target="_blank"
+          rel="noopener noreferrer"
           className="flex items-center gap-1.5 px-3 py-1.5 rounded-full font-inter text-[12.5px] font-600 transition-all"
           style={{
             background: '#00D1FF',
