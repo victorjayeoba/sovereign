@@ -9,13 +9,15 @@ import Pedestal from './Pedestal'
 import VideoModal from './VideoModal'
 
 const DEMO_VIDEO_ID = 'D1ibS8zL-Xw'
+const DEMO_VIDEO_URL = `https://youtu.be/${DEMO_VIDEO_ID}`
 
-function PreviewWithPlay({ onPlay }: { onPlay: () => void }) {
+function PreviewWithPlay() {
   return (
-    <button
-      type="button"
-      onClick={onPlay}
-      aria-label="Watch the Sovereign demo"
+    <a
+      href={DEMO_VIDEO_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Watch the Sovereign demo on YouTube"
       className="relative block w-full h-full group cursor-pointer"
     >
       <img
@@ -55,7 +57,7 @@ function PreviewWithPlay({ onPlay }: { onPlay: () => void }) {
           />
         </span>
       </div>
-    </button>
+    </a>
   )
 }
 
@@ -155,14 +157,14 @@ export default function Hero() {
           }}
         >
           <Pedestal>
-            <PreviewWithPlay onPlay={openVideo} />
+            <PreviewWithPlay />
           </Pedestal>
         </div>
 
         {/* Mobile fallback — stacked below text */}
         <div className="relative lg:hidden mt-10 pb-12">
           <Pedestal>
-            <PreviewWithPlay onPlay={openVideo} />
+            <PreviewWithPlay />
           </Pedestal>
         </div>
       </div>
